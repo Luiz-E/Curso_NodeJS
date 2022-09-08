@@ -1,4 +1,5 @@
 const express = require("express")
+const bodyParser = require("body-parser")
 const app = express()
 const mongoose = require("mongoose")
 const morgan = require("morgan")
@@ -15,6 +16,7 @@ mongoose.connection.on("error", (err) => {
 
 const postRoutes = require("./routes/post")
 
+app.use(bodyParser.json())
 app.use(morgan("dev"))
 app.use("/", postRoutes)
 
